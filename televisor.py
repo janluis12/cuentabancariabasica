@@ -143,7 +143,7 @@ class Televisor():
         # Validamos que la TV esté encendida
         # y que el canal sea mayor o igual a 1
         if self.__encendido and nuevocanal >= 1:
-            self.canal = nuevocanal
+            self.__canal = nuevocanal
             print("Canal cambiado a:", self.__canal)
         else:
             print("El canal ingresado es incorrecto o la TV está apagada")
@@ -151,7 +151,7 @@ class Televisor():
     # Método para mostrar el estado actual del televisor
     def estado(self):
         print("Marca:", self.marca)
-        print("Canal:", self.canal)
+        print("Canal:", self.__canal)
         print("Volumen:", self.__volumen)
         print("Encendido:", self.__encendido)
 
