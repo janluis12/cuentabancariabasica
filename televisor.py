@@ -8,9 +8,9 @@ class Televisor():
     # Sirve para dar valores iniciales a los atributos
     def __init__(self, marca, canal, volumen, encendido):
         self.marca = marca          # Marca del televisor
-        self.canal = canal          # Canal actual
-        self.volumen = volumen      # Volumen actual
-        self.encendido = encendido  # Estado del televisor: True o False
+        self.__canal = canal          # Canal actual
+        self.__volumen = volumen      # Volumen actual
+        self.__encendido = encendido  # Estado del televisor: True o False
 
     # Método que muestra el menú principal
     def menu(self):
@@ -62,18 +62,18 @@ class Televisor():
     # Método para encender la TV
     def encender_tv(self):
         # Si ya está encendida, mostramos un mensaje
-        if self.encendido:
+        if self.__encendido:
             print("La TV ya se encuentra encendida")
         else:
             # Si está apagada, cambiamos su estado a encendida
-            self.encendido = True
+            self.__encendido = True
             print("TV encendida")
 
     # Método para apagar la TV
     def apagar_tv(self):
         # Si está encendida, la apagamos
-        if self.encendido:
-            self.encendido = False
+        if self.__encendido:
+            self.__encendido = False
             print("TV apagada")
         else:
             # Si ya estaba apagada, lo avisamos
@@ -89,7 +89,7 @@ class Televisor():
             return
 
         # Validamos que la TV esté encendida
-        if not self.encendido:
+        if not self.__encendido:
             print("Por favor verifica que la TV esté encendida")
         
         # Validamos que la cantidad a subir sea mayor que 0
@@ -97,9 +97,9 @@ class Televisor():
             print("La cantidad a subir debe ser mayor que 0")
         
         # Validamos que el volumen final no supere 100
-        elif self.volumen + nuevo_volumen <= 100:
-            self.volumen += nuevo_volumen
-            print("El nuevo volumen es:", self.volumen)
+        elif self.__volumen + nuevo_volumen <= 100:
+            self.__volumen += nuevo_volumen
+            print("El nuevo volumen es:", self.__volumen)
         
         # Si supera 100, no se permite
         else:
@@ -115,7 +115,7 @@ class Televisor():
             return
     
         # Validamos que la TV esté encendida
-        if not self.encendido:
+        if not self.__encendido:
             print("Por favor verifica que la TV esté encendida")
         
         # Validamos que la cantidad a bajar sea mayor que 0
@@ -123,9 +123,9 @@ class Televisor():
             print("La cantidad a bajar debe ser mayor que 0")
         
         # Validamos que el volumen final no quede bajo 0
-        elif self.volumen - bajando_volumen >= 0:
-            self.volumen -= bajando_volumen
-            print("Volumen bajado a:", self.volumen)
+        elif self.__volumen - bajando_volumen >= 0:
+            self.__volumen -= bajando_volumen
+            print("Volumen bajado a:", self.__volumen)
         
         # Si el volumen queda bajo 0, no se permite
         else:
@@ -142,9 +142,9 @@ class Televisor():
             
         # Validamos que la TV esté encendida
         # y que el canal sea mayor o igual a 1
-        if self.encendido and nuevocanal >= 1:
+        if self.__encendido and nuevocanal >= 1:
             self.canal = nuevocanal
-            print("Canal cambiado a:", self.canal)
+            print("Canal cambiado a:", self.__canal)
         else:
             print("El canal ingresado es incorrecto o la TV está apagada")
 
@@ -152,8 +152,8 @@ class Televisor():
     def estado(self):
         print("Marca:", self.marca)
         print("Canal:", self.canal)
-        print("Volumen:", self.volumen)
-        print("Encendido:", self.encendido)
+        print("Volumen:", self.__volumen)
+        print("Encendido:", self.__encendido)
 
 
 # Creamos un objeto de la clase Televisor
